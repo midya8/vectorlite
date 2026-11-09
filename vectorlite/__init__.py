@@ -4,5 +4,5 @@ from .exact import ExactIndex
 from .lsh import LSHIndex
 from .vectors import cosine_similarity, l2_distance, load_vectors
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"
 __all__ = ["ExactIndex", "LSHIndex", "cosine_similarity", "l2_distance", "load_vectors", "__version__"]

@@ -22,4 +22,4 @@ def evaluate_recall(exact_index, approx_index, queries, k=10):
         approx = approx_index.query(query, k=k)
         per_query.append(recall_at_k(approx, exact))
     mean = sum(per_query) / len(per_query) if per_query else 1.0
-    return {"queries": len(queries), "k": k, "mean_recall": round(mean, 4), "recalls": per_query}
+    return {"queries": len(queries), "k": k, "mean_recall": mean, "recalls": per_query}
