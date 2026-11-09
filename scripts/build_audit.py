@@ -22,5 +22,5 @@ for i in range(32):
 # Explicit boundary sign and self-retrieval controls.
 for name,spec in [('Boundary signs',dict(items=ring,query=[1,0],bits=8,k=3,hyperplanes=[[1,0],[0,1],[-1,0],[0,-1]]*2)),('Self included',dict(items=ring[:1]+ring[3:4],query=[1,0],bits=8,seed=0,k=1,threshold=8)),('Self excluded',dict(items=ring[:1]+ring[3:4],query=[1,0],bits=8,seed=0,k=1,threshold=8,exclude_ids=['east']))]:
  cases.append(dict(name=name,spec=spec,report=audit(spec)))
-(root/'docs/audit.json').write_text(json.dumps({'cases':cases},indent=2,allow_nan=False)+'\n')
+(root/'docs/audit.json').write_text(json.dumps({'cases':cases},indent=1,allow_nan=False)+'\n')
 print(json.dumps({'cases':len(cases),'self_controls':[x['report']['selected']['recall'] for x in cases[-2:]],'threshold_rows':sum(len(x['report']['curve']) for x in cases)}))
