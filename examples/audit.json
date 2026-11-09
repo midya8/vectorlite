@@ -1,0 +1,68 @@
+{
+  "items": [
+    {
+      "id": "east",
+      "vector": [
+        1,
+        0
+      ]
+    },
+    {
+      "id": "near",
+      "vector": [
+        1,
+        0.25
+      ]
+    },
+    {
+      "id": "north-east",
+      "vector": [
+        1,
+        1
+      ]
+    },
+    {
+      "id": "north",
+      "vector": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": "west",
+      "vector": [
+        -1,
+        0
+      ]
+    },
+    {
+      "id": "south",
+      "vector": [
+        0,
+        -1
+      ]
+    },
+    {
+      "id": "twin",
+      "vector": [
+        1,
+        0
+      ]
+    },
+    {
+      "id": "zero",
+      "vector": [
+        0,
+        0
+      ]
+    }
+  ],
+  "query": [
+    0.97,
+    0.35
+  ],
+  "bits": 8,
+  "seed": 6,
+  "k": 1,
+  "threshold": 8
+}
