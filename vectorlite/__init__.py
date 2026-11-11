@@ -2,7 +2,8 @@
 
 from .exact import ExactIndex
 from .lsh import LSHIndex
+from .buckets import HammingBuckets, BucketLSHIndex
 from .vectors import cosine_similarity, l2_distance, load_vectors
 
-__version__ = "0.2.0"
-__all__ = ["ExactIndex", "LSHIndex", "cosine_similarity", "l2_distance", "load_vectors", "__version__"]
+__version__ = "0.3.0"
+__all__ = ["HammingBuckets", "BucketLSHIndex", "ExactIndex", "LSHIndex", "cosine_similarity", "l2_distance", "load_vectors", "__version__"]
