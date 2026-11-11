@@ -57,3 +57,34 @@ The monotone threshold result relies on fixed planes/query/k and the same determ
 ## License
 
 MIT.
+
+
+## Optional block-bucket retrieval (v0.3)
+
+The original `LSHIndex` remains an unchanged signature scan. New `HammingBuckets`
+and `BucketLSHIndex` add reusable exact-block posting tables with full Hamming
+verification and unchanged cosine/id rescoring. At radius r<bits, r+1 disjoint
+blocks guarantee every true radius neighbor shares an exact block. Duplicate
+signatures retain separate row ids. Dense cases and large-radius/block-cap cases
+fall back explicitly; auto reports its posting-length rule and work counters.
+
+A constructed512-row24-bit/radius2 control checks9 unique codes after3 lookups and
+11 posting visits instead of512 scan checks, while a dense duplicate control
+would visit1,536 postings and triggers scan fallback. These are structural counts,
+not timing, measured RAM, semantic relevance or a general sublinear guarantee.
+The34 complete native/independent BigInt browser reports retain every checked
+row. Old12-vector corpus,35 audit cases, scan and ranking conventions are intact.
+
+```python
+from vectorlite import BucketLSHIndex
+index = BucketLSHIndex(items, num_bits=24, min_shared_bits=22)
+neighbors = index.query(query, k=3, mode="auto")
+```
+
+59 Python tests include all50 prior tests. Eight Node/actual-Chrome tests include
+all3 prior tests. Exhaustive cube oracles check5,376 query/radius/mode combinations
+per language;480 random excluded-query/mode cases,360 random cosine rankings and
+105 old-spec backend rankings check equivalence with independent scans. A clean
+installed8-module artifact checks original commands/audits and both new CLI
+entrypoints. See [BUCKETS.md](BUCKETS.md) for algorithm credit, caps, costs and
+limits. Multi-index hashing is established prior work, not a new algorithm here.
