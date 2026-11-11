@@ -2,7 +2,6 @@ name: CI
 
 on:
   push:
-    branches: [main]
   pull_request:
 
 jobs:
@@ -20,6 +19,8 @@ jobs:
         run: python -m unittest discover -s tests -v
       - name: Regenerate retained audit
         run: python scripts/build_audit.py && git diff --exit-code docs/audit.json
+      - name: Regenerate block lookup witnesses
+        run: python scripts/build_buckets.py && git diff --exit-code examples/buckets.json docs/buckets-data.js
       - name: Run offline demo
         run: bash examples/demo.sh
 
@@ -30,8 +31,14 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - uses: browser-actions/setup-chrome@v1
+        id: chrome
+        with:
+          chrome-version: stable
       - name: Independent JavaScript and actual Chrome
-        run: node --test tests/engine.cjs tests/test_browser.cjs
+        run: node --test --test-concurrency=1 tests/engine.cjs tests/test_browser.cjs tests/test_buckets.cjs tests/test_buckets_browser.cjs
+        env:
+          CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
 
   installed:
     runs-on: ubuntu-latest
