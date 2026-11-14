@@ -98,7 +98,7 @@ node --test --test-concurrency=1 tests/engine.cjs tests/test_browser.cjs \
 bash scripts/wheel_smoke.sh
 ```
 
-The current suite has **59 Python tests and eight Node/Chrome tests**. The
+The current suite has **62 Python tests and eight Node/Chrome tests**. The
 original corpus/demo retain self-inclusive mean recall@3 of **1.0**. The original
 README, including its older claims, is preserved as a historical document;
 [METHOD.md](METHOD.md) defines the corrected signature-scan contract.
@@ -120,6 +120,8 @@ README, including its older claims, is preserved as a historical document;
   all 35 original audits, 105 original-spec backend rankings, 34 bucket reports,
   original query/audit commands and both bucket CLI entry points. CI covers
   Python 3.10-3.13; the installed job uses Python 3.13.
+
+Bit-isometry regressions add 2,592 permutation/XOR query-radius-mode comparisons and 360 row-permutation/exclusion comparisons. Hamming neighbors remain the same after remapping, including duplicate rows. A separate control shows that permuting bits can change block posting work even when neighbors do not change.
 
 Lowering the shared-bit threshold cannot reduce canonical recall when planes,
 query, k and score/ID order stay fixed. It does not follow that more bits or a
